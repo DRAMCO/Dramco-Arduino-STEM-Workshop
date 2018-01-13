@@ -10,15 +10,28 @@ void Remote::begin(){
 }
 
 void Remote::readDirections(){
-  _ax = analogRead(AX);
-  _ay = analogRead(AY);
+  int x = analogRead(AX);
+  int y = analogRead(AY);
+
+  // Change x and y axis values to left and right pwm values
+  #ifdef DEBUG
+    Serial.print("x: ");
+    Serial.println(x);
+    Serial.print("y: ");
+    Serial.println(y);
+  #endif
+
+  int xdir = (x/2)-255;       //scaling from 0-1024 to -256-256
+  int ydir = (y/2)-255;
+  _pwma = ydir-xdir;
+  _pwmb = ydir+xdir;
 }
 
 
-int Remote::getX(){
-  return _ax;
+int Remote::getPWMA(){
+  return _pwma;
 }
 
-int Remote::getY(){
-  return _ay;
+int Remote::getPWMB(){
+  return _pwmb;
 }

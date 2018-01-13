@@ -94,8 +94,8 @@ bool keepReading = true;
 }
 
 void Bluetooth_RN41::parseCommand(){
-  int _x = 0;
-  int _y = 0;
+  int pwma = 0;
+  int pwmb = 0;
   bool test = false;
   if('#'==gBtMsg[0]){
     gBtMsg[0]=0;
@@ -108,12 +108,12 @@ void Bluetooth_RN41::parseCommand(){
           break;
         }
         if(!test){
-          _x = (_x*10)+(gBtMsg[i]-48);
+          pwma = (pwma*10)+(gBtMsg[i]-48);
         }else{
-          _y = (_y*10)+(gBtMsg[i+1]-48);  
+          pwmb = (pwmb*10)+(gBtMsg[i+1]-48);  
         }
-        x = _x;
-        y = _y;
+        _pwma = pwma;
+        _pwmb = pwmb;
       }else{
         break;
       }
@@ -121,11 +121,11 @@ void Bluetooth_RN41::parseCommand(){
   }
 }
 
-void Bluetooth_RN41::sendDirections(int ax, int ay){
+void Bluetooth_RN41::sendDirections(int pwmA, int pwmB){
   BTSerial.print("#");
-  BTSerial.print(ax);
+  BTSerial.print(pwmA);
   BTSerial.print(",");
-  BTSerial.print(ay);
+  BTSerial.print(pwmB);
   BTSerial.println("!");
 }
 
@@ -143,10 +143,10 @@ void Bluetooth_RN41::viewSettings(){
   delay(1000);
 }
 
-int Bluetooth_RN41::getX(){
-  return x;
+int Bluetooth_RN41::getPWMA(){
+  return _pwma;
 }
 
-int Bluetooth_RN41::getY(){
-  return y;
+int Bluetooth_RN41::getPWMB(){
+  return _pwmb;
 }

@@ -4,5 +4,5 @@ receive	KEYWORD2
 parseCommand	KEYWORD2
 sendDirections	KEYWORD2
 viewSettings	KEYWORD2
-getX	KEYWORD2
-getY	KEYWORD2
+getPWMA	KEYWORD2
+getPWMB	KEYWORD2

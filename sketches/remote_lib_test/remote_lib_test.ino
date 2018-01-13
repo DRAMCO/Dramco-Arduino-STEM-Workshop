@@ -19,10 +19,10 @@ void setup(){
 void loop() {
   bluetooth.receive();
   remote.readDirections();
-  int x = remote.getX();
-  int y = remote.getY();
-  Serial.println(x);
-  Serial.println(y);
-  bluetooth.sendDirections(x, y);
+  int pwmA = remote.getPWMA();
+  int pwmB = remote.getPWMB();
+  Serial.println(pwmA);
+  Serial.println(pwmB);
+  bluetooth.sendDirections(pwmA, pwmB);
   delay(100);
 }

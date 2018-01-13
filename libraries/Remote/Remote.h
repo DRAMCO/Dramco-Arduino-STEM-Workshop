@@ -14,11 +14,11 @@ class Remote{
 		Remote();
 		void begin();
 		void readDirections();
-		int getX();
-		int getY();
+		int getPWMA();
+		int getPWMB();
 	private: 
-		int _ax;
-		int _ay;
+		int _pwma;
+		int _pwmb;
 };
 
 #endif

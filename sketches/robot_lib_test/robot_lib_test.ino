@@ -30,9 +30,9 @@ void setup(){
 void loop(){
   bluetooth.receive();
   bluetooth.parseCommand();
-  int x = bluetooth.getX();
-  int y = bluetooth.getY();
-  Serial.println(x);
-  Serial.println(y);
-  robot.driveCar(x,y);
+  int pwmA = bluetooth.getPWMA();
+  int pwmB = bluetooth.getPWMB();
+  Serial.println(pwmA);
+  Serial.println(pwmB);
+  robot.driveCar(pwmA,pwmB);
 }

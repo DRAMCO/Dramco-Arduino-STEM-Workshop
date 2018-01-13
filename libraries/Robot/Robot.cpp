@@ -31,21 +31,9 @@ void Robot::begin(){
   Serial.begin(9600);
 }
 
-void Robot::driveCar(int x, int y){
+void Robot::driveCar(int pwmA, int pwmB){
   
-  #ifdef DEBUG
-    Serial.print("x: ");
-    Serial.println(x);
-    Serial.print("y: ");
-    Serial.println(y);
-  #endif
-
-  int pwmA = 0;
-  int pwmB = 0;
-  int xdir = (x/2)-255;       //scaling from 0-1024 to -256-256
-  int ydir = (y/2)-255;
-  pwmA = ydir-xdir;
-  pwmB = ydir+xdir;
+  
 
   #ifdef DEBUG
     Serial.print("pwmA: ");
