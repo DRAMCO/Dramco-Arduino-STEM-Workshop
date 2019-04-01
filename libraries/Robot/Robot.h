@@ -9,7 +9,8 @@ class Robot{
 	public:
 		Robot(int enA, int in1, int in2, int enB, int in3, int in4);	// Constructor
 		void begin();													// Initialize the robot!
-		void driveCar(int pwmA, int pwmB);									// Drive the car with 2 values (0 - 1024) -> inputs from ADC
+		void driveCar(int pwmA, int pwmB);								// Drive the car with 2 values (0 - 1024) -> inputs from ADC
+		void drive(int pwmA, int pwmB);
 	private:
 		int _enA;
 		int _in1;

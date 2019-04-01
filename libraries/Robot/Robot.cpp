@@ -32,8 +32,6 @@ void Robot::begin(){
 }
 
 void Robot::driveCar(int pwmA, int pwmB){
-  
-  
 
   #ifdef DEBUG
     Serial.print("pwmA: ");
@@ -70,6 +68,33 @@ void Robot::driveCar(int pwmA, int pwmB){
     digitalWrite(_in4, HIGH);
     pwmB *= -1;
   }
+  analogWrite(_enA, pwmA);
+  analogWrite(_enB, pwmB);
+}
+
+
+
+void Robot::drive(int pwmA, int pwmB){
+
+  if(pwmA < 0){
+    digitalWrite(_in1, HIGH);
+    digitalWrite(_in2, LOW);
+    pwmA *= -1;
+  }
+  if(pwmB < 0){
+    digitalWrite(_in3, HIGH);
+    digitalWrite(_in4, LOW);
+    pwmB *= -1;
+  }
+  if(pwmA > 0){
+    digitalWrite(_in1, LOW);
+    digitalWrite(_in2, HIGH);
+  }
+  if(pwmB > 0){
+    digitalWrite(_in3, LOW);
+    digitalWrite(_in4, HIGH);
+  }
+
   analogWrite(_enA, pwmA);
   analogWrite(_enB, pwmB);
 }
